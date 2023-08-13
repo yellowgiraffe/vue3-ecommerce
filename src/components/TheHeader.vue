@@ -1,5 +1,5 @@
 <template>
-  <header class="flex justify-between	container mx-auto my-5 font-semibold">
+  <header class="flex justify-between	container mx-auto my-8 font-semibold">
     <div class="flex">
       <a href="/"><img src="../assets/img/logo.svg" class="mr-5" alt="Logo" ></a>
       <nav>
