@@ -4,7 +4,7 @@
       <a href="/"><img src="../assets/img/logo.svg" class="mr-5" alt="Logo" ></a>
       <nav>
         <router-link to="/" class="mr-5">Home</router-link>
-        <router-link to="/shop" class="mr-5">Shop</router-link>
+        <router-link to="/products" class="mr-5">Shop</router-link>
         <router-link to="/blog" class="mr-5">Blog</router-link>
         <router-link to="/productReform">Product Reform</router-link>
       </nav>

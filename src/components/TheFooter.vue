@@ -1,6 +1,6 @@
 <template>
-  <footer class="flex gap-8 container mx-auto mb-10">
-    <div>
+  <footer class="footer flex gap-8 container justify-center mx-auto mb-16">
+    <div class="w-1/5">
       <h3 class="text-xl mb-4">Get in touch</h3>
       <h4 class="text-lg font-medium">Address</h4>
       <div class="mb-4">
@@ -13,7 +13,7 @@
         10.00 - 18.00
       </div>
     </div>
-    <div>
+    <div class="w-1/5">
       <h3 class="text-xl mb-2">Service Center</h3>
       <div class="mb-4">
         0811-233-8899
@@ -26,5 +26,17 @@
         Social media icons
       </div>
     </div>
+    <div class="w-1/5">
+      <h3 class="text-xl mb-4">Useful Link</h3>
+    </div>
   </footer>
 </template>
+
+<style>
+.footer {
+  background-image: url('../assets/img/cut-lime.svg');
+  background-position: bottom left;
+  background-size: 10%;
+  background-repeat: no-repeat;
+}
+</style>

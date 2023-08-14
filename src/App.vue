@@ -4,9 +4,13 @@ import TheFooter from './components/TheFooter.vue'
 </script>
 
 <template>
-  <TheHeader/>
-  <RouterView />
-  <TheFooter />
+  <div>
+    <TheHeader/>
+    <main class="h-full">
+      <RouterView />
+    </main>
+    <TheFooter />
+  </div>
 </template>
 
 <style scoped>
