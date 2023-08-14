@@ -25,7 +25,7 @@ productStore.fetchProductList()
       </div>
     </div>
   </section>
-  <section class="container mx-auto flex flex-wrap mb-20">
+  <section class="container mx-auto flex justify-between gap-4 flex-wrap mb-20">
     <ProductItem v-for="(product, i) in productStore.products" :key="i" :product="product" />
   </section>
 </template>

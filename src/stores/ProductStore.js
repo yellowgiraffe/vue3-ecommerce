@@ -16,9 +16,13 @@ export const useProductStore = defineStore('productStore', () => {
 
   const fetchProductList = async () => {
     isLoading.value = true
-    const response = await client.getEntries({content_type: 'juice',})
+    const response = await client.getEntries({
+      content_type: 'juice',
+      limit: 6,
+      order: '-sys.createdAt',
+    })
     products.value = response.items
-    console.log('ProductStore', response.items)
+    console.log('ProductStore', response)
     // client
     //   .getEntries()
     //   .then((entry) => console.log(entry))
@@ -31,7 +35,7 @@ export const useProductStore = defineStore('productStore', () => {
 
   const fetchProductItem = async (id) => {
     isLoading.value = true
-    const response = await client.getEntry('4KScFliogAdKX0aV63LdVU')
+    const response = await client.getEntry(id)
     console.log(response)
     product.value = response
     // client

@@ -1,3 +1,7 @@
+<script setup>
+import { useCartStore } from '../stores/CartStore'
+const cartStore = useCartStore()
+</script>
 <template>
   <header class="flex justify-between	container mx-auto my-8 font-semibold">
     <div class="flex">
@@ -12,6 +16,9 @@
     <div>
       <router-link to="/cart" class="mr-5">
         <img src="../assets/img/shopping-cart.svg" class="inline-block" alt="Shopping cart">
+        <span class="bg-lime-600 rounded px-1">
+          {{ cartStore.count }}
+        </span>
       </router-link>
       <span class="mr-5">0.00</span>
       <router-link to="/signin" custom v-slot="{ navigate }" >
