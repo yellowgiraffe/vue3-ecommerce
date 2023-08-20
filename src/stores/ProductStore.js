@@ -14,15 +14,15 @@ export const useProductStore = defineStore('productStore', () => {
     accessToken: import.meta.env.VITE_CONTENTFUL_PUBLIC_ACCESS_TOKEN,
   })
 
-  const fetchProductList = async () => {
+  const fetchProductList = async (filter) => {
     isLoading.value = true
     const response = await client.getEntries({
       content_type: 'juice',
+      skip: (filter.page - 1) * 6,
       limit: 6,
-      order: '-sys.createdAt',
+      order: filter.order// '-sys.createdAt',
     })
-    products.value = response.items
-    console.log('ProductStore', response)
+    products.value = response
     // client
     //   .getEntries()
     //   .then((entry) => console.log(entry))

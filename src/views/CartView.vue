@@ -15,6 +15,18 @@ const deleteProduct = (idx) => {
 <template>
   <section class="container mx-auto mb-20">
     <h1 class="text-3xl mb-4">Cart</h1>
+    <div v-if="cartStore.products.length === 0" class="p-5 border rounded">
+      <p class="mb-4">Your cart is empty. Visit our shop to check healthy juices</p>
+      <router-link to="/products" custom v-slot="{ navigate }" >
+        <button
+          role="link"
+          class="rounded text-white bg-lime-600 px-8 py-1"
+          @click="navigate"
+        >
+          Shop Now
+        </button>
+      </router-link>
+    </div>
     <div
       v-for="(product, idx) in cartStore.products"
       :key="product.sys.id"

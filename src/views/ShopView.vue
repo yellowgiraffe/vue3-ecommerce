@@ -1,10 +1,19 @@
 <script setup>
 import { useProductStore } from '../stores/ProductStore'
 import ProductItem from '../components/products/ProductItem.vue'
+import MyPagination from '../components/MyPagination.vue'
 
 const productStore = useProductStore()
-productStore.fetchProductList()
-
+const filter = {
+  order: '-sys.createdAt',
+  page: 1
+}
+productStore.fetchProductList(filter)
+const changePage = (a) => {
+  console.log(a)
+  filter.page = a
+  productStore.fetchProductList(filter)
+}
 
 </script>
 
@@ -19,14 +28,19 @@ productStore.fetchProductList()
           id=""
           class="rounded-full outline-neutral-400	pl-6 pr-14 py-4 w-full"
         >
-        <!-- <button class="search__button">
-          <img src="../assets/img/search.svg" alt="">
-        </button> -->
       </div>
     </div>
   </section>
   <section class="container mx-auto flex justify-between gap-4 flex-wrap mb-20">
-    <ProductItem v-for="(product, i) in productStore.products" :key="i" :product="product" />
+    <ProductItem v-for="(product, i) in productStore.products.items" :key="i" :product="product" />
+  </section>
+  <section v-if="productStore.products.total" class="container mx-auto mb-20">
+    <MyPagination
+      class="text-center"
+      :totalItems="productStore.products.total"
+      :perPage="6"
+      @change-page="changePage"
+    />
   </section>
 </template>
 

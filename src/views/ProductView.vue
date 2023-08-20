@@ -23,7 +23,7 @@ const addToCart = () => {
 <template>
   <div v-if="productStore.product" class="container mx-auto mb-24 pt-10">
     <section class="flex gap-10">
-      <div class="w-1/2">
+      <div class="w-1/3">
         <div class="bg-lime-100 mb-2">
           <img
             :src="productStore.product.fields.image[0].fields.file.url"
