@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ShopView from '../views/ShopView.vue'
 import ProductView from '../views/ProductView.vue'
+import BlogView from '../views/BlogView.vue'
+import ReformView from '../views/ReformView.vue'
 import CartView from '../views/CartView.vue'
 
 const router = createRouter({
@@ -24,12 +26,12 @@ const router = createRouter({
     {
       path: '/blog',
       name: 'blog',
-      component: HomeView,
+      component: BlogView,
     },
     {
       path: '/productReform',
       name: 'productReform',
-      component: HomeView,
+      component: ReformView,
     },
     {
       path: '/cart',

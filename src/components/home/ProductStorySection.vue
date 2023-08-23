@@ -1,5 +1,5 @@
 <template>
-  <section class="text-white bg-lime-600 mb-10">
+  <section class="text-white bg-lime-600 mb-20">
     <div class="product-story-bg container mx-auto flex justify-end py-14">
       <div class="w-1/2">
         <div class="uppercase font-medium tracking-widest">Product story</div>

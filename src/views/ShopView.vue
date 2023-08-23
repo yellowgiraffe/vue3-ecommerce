@@ -6,12 +6,12 @@ import MyPagination from '../components/MyPagination.vue'
 const productStore = useProductStore()
 const filter = {
   order: '-sys.createdAt',
-  page: 1
+  page: 1,
+  perPage: 3,
 }
 productStore.fetchProductList(filter)
-const changePage = (a) => {
-  console.log(a)
-  filter.page = a
+const changePage = (page) => {
+  filter.page = page
   productStore.fetchProductList(filter)
 }
 
@@ -23,7 +23,7 @@ const changePage = (a) => {
       <div class="search w-3/4 mx-auto">
         <input
           type="text"
-          placeholder="Search everything Reform Juice"
+          placeholder="Search everything Reform Juice (not implemented for now)"
           name=""
           id=""
           class="rounded-full outline-neutral-400	pl-6 pr-14 py-4 w-full"
@@ -38,7 +38,8 @@ const changePage = (a) => {
     <MyPagination
       class="text-center"
       :totalItems="productStore.products.total"
-      :perPage="6"
+      :page="filter.page"
+      :perPage="filter.perPage"
       @change-page="changePage"
     />
   </section>

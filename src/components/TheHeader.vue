@@ -13,14 +13,13 @@ const cartStore = useCartStore()
         <router-link to="/productReform">Product Reform</router-link>
       </nav>
     </div>
-    <div>
-      <router-link to="/cart" class="mr-5">
+    <div class="flex items-center">
+      <router-link to="/cart" class="flex mr-3">
         <img src="../assets/img/shopping-cart.svg" class="inline-block" alt="Shopping cart">
-        <span class="bg-lime-600 rounded px-1">
-          {{ cartStore.count }}
-        </span>
+        <div class="w-5 h-5 relative right-3 text-center text-xs leading-5 bg-lime-600 text-white rounded-full px-1">
+          <span>{{ cartStore.count }}</span>
+        </div>
       </router-link>
-      <span class="mr-5">0.00</span>
       <router-link to="/signin" custom v-slot="{ navigate }" >
         <button
           role="link"

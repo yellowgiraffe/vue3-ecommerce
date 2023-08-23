@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="w-1/5">
-      <h3 class="text-xl mb-4">Useful Link</h3>
+      <h3 class="text-xl mb-4">Useful Links</h3>
     </div>
   </footer>
 </template>

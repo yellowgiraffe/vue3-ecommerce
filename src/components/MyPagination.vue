@@ -22,11 +22,11 @@ const btns = Math.ceil(props.totalItems / props.perPage)
 
 <template>
   <div>
-  <div>Page nr: {{ page }}, {{totalItems}}, {{btns}}</div>
     <button
       v-for="index in btns"
       :key="index"
       class="border rounded px-3 py-1 mx-1"
+      :class="{ 'bg-lime-600 text-white' : index === page }"
       @click="$emit('change-page', index)"
     >
       {{ index }}

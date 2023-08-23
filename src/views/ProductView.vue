@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useProductStore } from '../stores/ProductStore'
 import { useCartStore } from '../stores/CartStore'
@@ -12,28 +12,32 @@ const cartStore = useCartStore()
 const route = useRoute()
 
 const counter = ref(1)
-productStore.fetchProductItem(route.params.id)
+const product = ref(null)
+
+onMounted(async () => {
+  product.value = await productStore.fetchProductItem(route.params.id)
+})
 
 const addToCart = () => {
-  cartStore.addProduct(productStore.product, counter.value)
+  cartStore.addProduct(product.value, counter.value)
   counter.value = 1
 }
 
 </script>
 <template>
-  <div v-if="productStore.product" class="container mx-auto mb-24 pt-10">
+  <div v-if="product" class="container mx-auto mb-24 pt-10">
     <section class="flex gap-10">
       <div class="w-1/3">
         <div class="bg-lime-100 mb-2">
           <img
-            :src="productStore.product.fields.image[0].fields.file.url"
-            :alt="productStore.product.fields.image[0].fields.description"
+            :src="product.fields.image[0].fields.file.url"
+            :alt="product.fields.image[0].fields.description"
             class="mx-auto"
           >
         </div>
         <div class="grid grid-flow-col justify-stretch">
           <img
-            v-for="(img, i) in productStore.product.fields.image"
+            v-for="(img, i) in product.fields.image"
             :key="i"
             :src="img.fields.file.url"
             :alt="img.fields.description"
@@ -43,13 +47,13 @@ const addToCart = () => {
       </div>
       <div>
         <h1 class="text-3xl font-light uppercase mb-1">
-          {{ productStore.product.fields.name }}
+          {{ product.fields.name }}
         </h1>
         <div class="text-2xl font-medium mb-2">
-          ${{ productStore.product.fields.price.toFixed(2) }}
+          ${{ product.fields.price.toFixed(2) }}
         </div>
         <ProductRating
-          :rating="productStore.product.fields.rating"
+          :rating="product.fields.rating"
           class="mb-6"
         />
         <ProductCounter
@@ -68,7 +72,7 @@ const addToCart = () => {
           <h2 class="text-xl mb-2">About this Item</h2>
           <ul class="list-disc w-2/3 ml-2 list-image-[url(img/circle.svg)]">
             <li
-              v-for="(item, i) in productStore.product.fields.description"
+              v-for="(item, i) in product.fields.description"
               :key="i"
               class="mb-2"
             >
