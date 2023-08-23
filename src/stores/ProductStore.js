@@ -28,7 +28,6 @@ export const useProductStore = defineStore('productStore', () => {
     isLoading.value = true
     const response = await client.getEntry(id)
     isLoading.value = false
-    console.log(response)
     return response
   }
   
