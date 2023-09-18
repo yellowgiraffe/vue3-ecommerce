@@ -1,11 +1,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { createToast } from 'mosha-vue-toastify'
+
 import { useProductStore } from '../stores/ProductStore'
 import { useCartStore } from '../stores/CartStore'
 
 import ProductRating from '../components/products/ProductRating.vue'
 import ProductCounter from '../components/products/ProductCounter.vue';
+
+import 'mosha-vue-toastify/dist/style.css'
 
 const productStore = useProductStore()
 const cartStore = useCartStore()
@@ -20,6 +24,15 @@ onMounted(async () => {
 
 const addToCart = () => {
   cartStore.addProduct(product.value, counter.value)
+  const toastText = counter.value === 1
+    ? `${counter.value} X ${product.value.fields.name} was added to your cart`
+    : `${counter.value} X ${product.value.fields.name} were added to your cart`
+  createToast(toastText, {
+    type: 'success',
+    position: 'top-center',
+    toastBackgroundColor: '#65a30d',
+    hideProgressBar: true
+  })
   counter.value = 1
 }
 
